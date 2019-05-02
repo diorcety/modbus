@@ -36,7 +36,8 @@ public enum FunctionCode {
     MaskWriteRegister(0x16),
     ReadWriteMultipleRegisters(0x17),
     ReadFifoQueue(0x18),
-    EncapsulatedInterfaceTransport(0x2B);
+    EncapsulatedInterfaceTransport(0x2B),
+    UMAS(0x5A);
 
     private final int code;
 
@@ -69,6 +70,7 @@ public enum FunctionCode {
             case 0x17: return ReadWriteMultipleRegisters;
             case 0x18: return ReadFifoQueue;
             case 0x2B: return EncapsulatedInterfaceTransport;
+            case 0x5A: return UMAS;
         }
 
         return null;
