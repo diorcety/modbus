@@ -56,7 +56,7 @@ public class ModbusResponseDecoder implements ModbusPduDecoder {
         }
     }
 
-    private ModbusPdu decodeException(FunctionCode functionCode, ByteBuf buffer) throws DecoderException {
+    protected ModbusPdu decodeException(FunctionCode functionCode, ByteBuf buffer) throws DecoderException {
         int code = buffer.readUnsignedByte();
 
         ExceptionCode exceptionCode = ExceptionCode.fromCode(code);
@@ -67,7 +67,7 @@ public class ModbusResponseDecoder implements ModbusPduDecoder {
         return new ExceptionResponse(functionCode, exceptionCode);
     }
 
-    private ModbusPdu decodeResponse(FunctionCode functionCode, ByteBuf buffer) throws DecoderException {
+    protected ModbusPdu decodeResponse(FunctionCode functionCode, ByteBuf buffer) throws DecoderException {
         switch (functionCode) {
             case ReadCoils:
                 return decodeReadCoils(buffer);
